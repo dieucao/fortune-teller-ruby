@@ -21,4 +21,12 @@ class FortuneServer < Sinatra::Base
         return FORTUNES.sample
     end
 
+    get '/env' do
+        r = ""
+        ENV.keys.each do |k|
+            r += "#{k} = #{ENV[k]}<br />\n"
+        end
+        return r
+    end
+
 end
