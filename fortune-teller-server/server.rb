@@ -13,6 +13,10 @@ class FortuneServer < Sinatra::Base
         end
     end
 
+    get '/' do
+        return '<a href="/random">/random</a><br /><a href="/fortunes">/fortunes</a><br /><a href="/env">/env</a>'
+    end
+
     get '/fortunes' do
         return FORTUNES.to_json
     end
