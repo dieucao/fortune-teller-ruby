@@ -6,12 +6,31 @@ class FortuneTeller < Sinatra::Base
 
     configure do
         FORTUNE_SERVER_URL = "http://localhost:9293"
-        INSTNACE_ID = ENV['CF_INSTANCE_INDEX']
+        INSTNACE_ID = ENV['CF_INSTANCE_INDEX'] || "No Instance ID"
+
+        if RUBY_PLATFORM == "x86_64-darwin17"
+            STACK = "OS X"
+        elsif RUBY_PLATFORM == "x86_64-linux"
+            lsb_release = File.open("/etc/lsb-release", 'rb', &:read).split("\n")
+            lsb_release.each do |v|
+                if v.include? "DISTRIB_DESCRIPTION"
+                    STACK = v.split("=").last.gsub("\"", "")
+                end
+            end
+
+            if STACK.empty?
+                STACK = "Unknown Linux Distro"
+            end
+        else
+            STACK = "Unknown Operating System"
+        end
 
         TEMPLATE = File.open('templates/index.html.erb', 'rb', &:read)
     end
 
     get '/' do
+        @stack = STACK
+        @instance_id = INSTNACE_ID
         ERB.new(TEMPLATE).result(binding)
     end
 
@@ -24,8 +43,12 @@ class FortuneTeller < Sinatra::Base
     end
 
     get '/random' do
-        url = URI.parse("#{FORTUNE_SERVER_URL}/random")
-        Net::HTTP.get_response(url).body
+        begin
+            url = URI.parse("#{FORTUNE_SERVER_URL}/random")
+            return Net::HTTP.get_response(url).body
+        rescue
+            return "The future is cloudy... (Could not connect to Fortune service)"
+        end
     end
 
     get '/env' do
