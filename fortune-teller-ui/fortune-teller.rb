@@ -39,6 +39,7 @@ class FortuneTeller < Sinatra::Base
         @stack = STACK
         @instance_id = INSTNACE_ID
         @server_url = FORTUNE_SERVER_URL
+        @time = Time.now.utc
         ERB.new(TEMPLATE).result(binding)
     end
 
