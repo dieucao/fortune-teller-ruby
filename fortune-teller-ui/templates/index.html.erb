@@ -3,10 +3,10 @@
 <html ng-app="fortunes">
 
 <head>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.4/angular-route.min.js"></script>
@@ -20,11 +20,17 @@
     <p>Find out what the future holds...</p>
 </div>
 
-<div ng-view class="container" id="fortune"></div>
+<div class="container fluid">
+    <div class="row">
+        <div ng-view class="col-9">Reading your fortune...</div>
 
-<div class="container">
-    Instance ID: <%= @instance_id%><br />
-    Stack: <%= @stack %>
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Instance ID:</strong> <%= @instance_id%></li>
+                <li class="list-group-item"><strong>Stack:</strong> <%= @stack %></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 </body>
