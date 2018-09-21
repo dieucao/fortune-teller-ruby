@@ -1,11 +1,18 @@
 require 'sinatra'
 require 'erb'
 require "net/http"
+require 'json'
 
 class FortuneTeller < Sinatra::Base
 
     configure do
-        FORTUNE_SERVER_URL = "http://localhost:9293"
+        if ENV.has_key? "VCAP_SERVICES" and JSON.parse(ENV["VCAP_SERVICES"]).has_key? "user-provided"
+            FORTUNE_SERVER_URL = JSON.parse(ENV["VCAP_SERVICES"])["user-provided"].first["credentials"]["url"]
+        else
+            FORTUNE_SERVER_URL = "http://localhost:9293"
+        end
+
+        
         INSTNACE_ID = ENV['CF_INSTANCE_INDEX'] || "No Instance ID"
 
         if RUBY_PLATFORM == "x86_64-darwin17"
@@ -31,6 +38,7 @@ class FortuneTeller < Sinatra::Base
     get '/' do
         @stack = STACK
         @instance_id = INSTNACE_ID
+        @server_url = FORTUNE_SERVER_URL
         ERB.new(TEMPLATE).result(binding)
     end
 
