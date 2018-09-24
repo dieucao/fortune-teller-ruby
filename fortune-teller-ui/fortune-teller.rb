@@ -36,6 +36,9 @@ class FortuneTeller < Sinatra::Base
     end
 
     get '/' do
+        if params.has_key? 'auto' and params['auto'] == 'true'
+            @auto = true
+        end
         @stack = STACK
         @instance_id = INSTNACE_ID
         @server_url = FORTUNE_SERVER_URL
