@@ -36,12 +36,21 @@ class FortuneTeller < Sinatra::Base
     end
 
     get '/' do
+        # Get Service URL
+        if params.has_key? "serviceURL"
+            @server_url = params["serviceURL"]
+            FORTUNE_SERVER_URL = @server_url
+        else
+            @server_url = FORTUNE_SERVER_URL
+        end
+
+        # Detect autorefresh
         if params.has_key? 'auto' and params['auto'] == 'true'
             @auto = true
         end
+
         @stack = STACK
         @instance_id = INSTNACE_ID
-        @server_url = FORTUNE_SERVER_URL
         @time = Time.now.utc
         ERB.new(TEMPLATE).result(binding)
     end

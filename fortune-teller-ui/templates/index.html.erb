@@ -32,13 +32,21 @@
             <ul class="list-group">
                 <li class="list-group-item"><strong>Instance ID:</strong> <%= @instance_id%></li>
                 <li class="list-group-item"><strong>Stack:</strong> <%= @stack %></li>
-                <li class="list-group-item"><strong>Serice:</strong> <a href="<%= @server_url %>"><%= @server_url %></a></li>
+                <li class="list-group-item">
+                    <form action="/">
+                        <div class="form-group">
+                            <label for="serviceURL"><strong>Service URL:</strong></label>
+                            <input type="text" class="form-control" id="serviceURL" name="serviceURL" value="<%= @server_url %>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </li>
             </ul>
             <br />
-            <input class="form-check-input" type="checkbox" value="" id="autorefresh" onclick="toggleAuto()" <%= @auto ? "checked" : "" %>>
-            <label class="form-check-label" for="autorefresh">
-                Auto-Refresh
-            </label>
+            <div>
+                <input class="form-check-input" type="checkbox" value="" id="autorefresh" onclick="toggleAuto()" <%= @auto ? "checked" : "" %>>
+                <label class="form-check-label" for="autorefresh">Auto-Refresh</label>
+            </div>
         </div>
     </div>
 </div>
