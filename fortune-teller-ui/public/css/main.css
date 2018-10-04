@@ -1,0 +1,176 @@
+body {
+    background-image: url("/images/ball2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.jumbotron {
+    color: #ffe066;
+    text-align: right;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    font-family: "Carnivalee Freakshow";
+    padding-top: 32px;
+}
+
+.intro {
+    width: 100%;
+}
+
+.intro h1 {
+    letter-spacing: 3px;
+    font-size: 60px;
+}
+
+.intro p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 26px;
+}
+
+.jumboImage {
+    width: 17%;
+    height: 20%;
+}
+
+.ng-binding {
+    text-align: center;
+    position: relative;
+    font-family: "Carnivalee Freakshow";
+}
+
+.col-9 {
+    right: 16px;
+    max-width: 40%;
+}
+
+.col-3 {
+    position: absolute;
+    right: 160px;
+}
+
+.list-group {
+    width: 120%;
+}
+
+.submit {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-check-input {
+    position: static;
+    margin: .3rem 6px 0px 20px;
+}
+
+.text-muted {
+    color: white !important;
+    position: absolute;
+    left: 6px;
+    bottom: 10px;
+}
+
+/****** MEDIA QUERIES ******/
+
+@media screen and (max-width: 1120px) {
+    .col-9 {
+        left: 22px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .col-9 {
+        max-width: 46%;
+        right: 70px;
+        bottom: 20px;
+    }
+
+    .ng-binding {
+        font-size: 50px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .col-9 {
+        right: 100px;
+    }
+}
+
+@media screen and (min-width: 1678px) {
+    .col-9 {
+        max-width: 52%;
+        right: 170px;
+    }
+
+    .ng-binding {
+        font-size: 56px;
+    }
+}
+
+@media screen and (min-width: 1798px) {
+    .col-9 {
+        max-width: 56%;
+        right: 210px;
+    }
+
+    .ng-binding {
+        font-size: 58px;
+    }
+}
+
+@media screen and (min-width: 1919px) {
+    .col-9 {
+        max-width: 60%;
+        right: 270px;
+        top: 40px;
+    }
+
+    .ng-binding {
+        font-size: 60px;
+    }
+}
+
+/****** ANIMATIONS ******/
+
+.ng-binding {
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+     -ms-animation: fadein 2s; /* Internet Explorer */
+      -o-animation: fadein 2s; /* Opera < 12.1 */
+         animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
