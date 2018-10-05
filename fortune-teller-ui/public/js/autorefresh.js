@@ -1,4 +1,14 @@
 function checkAutorefresh() {
+
+    $.get({
+        dataType: "json",
+        url: "/random"},
+        function(data, status) {
+            $("#fortune").text(data["fortune"]);
+            $("#backendInstance").text(data["instance_id"]);
+            $("#backendStack").text(data["stack"]);
+    });
+
     setInterval(autorefresh, 1000);
 }
 
