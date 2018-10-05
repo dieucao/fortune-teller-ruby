@@ -45,8 +45,14 @@ class FortuneTeller < Sinatra::Base
         end
 
         # Detect autorefresh
-        if params.has_key? 'auto' and params['auto'] == 'true'
-            @auto = true
+        if params.has_key? 'auto'
+            @auto = params['auto']
+        end
+
+        @carnival = false
+        # Switch to carnival theme if specified
+        if params.has_key? 'carnival'
+            @carnival = params['carnival']
         end
 
         @stack = STACK
