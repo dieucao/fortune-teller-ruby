@@ -16,23 +16,15 @@
     <body onload="checkAutorefresh()">
 
         <div class="jumbotron container">
-            <div class="intro">
-                <h1>Fortune Teller!</h1>
-                <p>Find out what the future holds...</p>
-            </div>
-        </div>
-
-        <div class="container fluid">
-            <div class="row">
-                <div class="col-9"><h2><div id="fortune">Reading your fortune...</div></h2></div>
-
-                <div class="col-3">
-                    <ul class="list-group">
-                        <li class="list-group-item"><strong>Frontend Instance:</strong> <%= @instance_id%></li>
-                        <li class="list-group-item"><strong>Frontend Stack:</strong> <%= @stack %></li>
-                        <li class="list-group-item"><strong>Backend Stack:</strong> <div id="backendStack">Waiting...</div></li>
-                        <li class="list-group-item"><strong>Backend Instance:</strong> <div id="backendInstance">Waiting...</div></li>
-                        <li class="list-group-item">
+            <div class="container fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="intro">
+                            <h1>Fortune Teller!</h1>
+                            <p>Find out what the future holds...</p>
+                        </div>
+                    </div>
+                        <div class="col-6">
                             <form action="/">
                                 <div class="form-group">
                                     <label for="serviceURL"><strong>Service URL:</strong></label>
@@ -41,17 +33,53 @@
                                 <div class="submit">
                                     <button class="btn btn-primary">Submit</button>
                                 </div>
-                                <div>
+                               <div>
                                     <input class="form-check-input" type="checkbox" value="" id="autorefresh" onClick="autorefreshClicked();" <%= @auto ? "checked" : "" %>>
                                     <label class="form-check-label" for="autorefresh">Auto-Refresh</label>
                                 </div>
                             </form>
-                        </li>
-                    </ul>
-                    <br />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="container fluid">
+            <div><h2><div id="fortune">Reading your fortune...</div></h2></div>
+        </div>
+
+        <br />
+
+        <div class="container fluid">
+            <div class="row">
+                <div class="col-6">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th scope="col">Frontend</th>
+                                <th scope="col">Backend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Instance ID</th>
+                                <td><h4><%= @instance_id%></h4></td>
+                                <td><h4><div id="backendInstance">Waiting...</div></h4></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Stack</th>
+                                <td><h4><%= @stack %></h4></td>
+                                <td><h4><div id="backendStack">Waiting...</div></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
 
         <div class="container"><small class="text-muted"><%= @time %></small></div>
 
