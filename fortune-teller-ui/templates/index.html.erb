@@ -52,23 +52,23 @@
 
         <div class="container fluid">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th scope="col">Frontend</th>
-                                <th scope="col">Backend</th>
+                                <th scope="col" class="text-muted">Frontend</th>
+                                <th scope="col" class="text-muted">Backend</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Instance ID</th>
+                                <th scope="row" class="text-muted">Instance ID</th>
                                 <td><h4><%= @instance_id%></h4></td>
                                 <td><h4><div id="backendInstance">Waiting...</div></h4></td>
                             </tr>
                             <tr>
-                                <th scope="row">Stack</th>
+                                <th scope="row" class="text-muted">Stack</th>
                                 <td><h4><%= @stack %></h4></td>
                                 <td><h4><div id="backendStack">Waiting...</div></h4></td>
                             </tr>
