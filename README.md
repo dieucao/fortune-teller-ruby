@@ -3,6 +3,45 @@ Fortune Teller Demo (Ruby)
 
 A rewrite of the [Spring Fortune Teller demo](https://github.com/spring-cloud-samples/fortune-teller) in Ruby, made of two components, the UI and the Fortune Service.
 
+Running the demo on Cloud Foundry
+---
+Requires cf networking, polyglot service discovery enabled
+Optionally use the experimental zdt restart and push with cflinuxfs3 stack and ruby buildpack
+
+1. Push both apps
+```
+cf push fortune-teller-ui -b ruby_buildpack -m 100M -i 3 
+cf push fortune-teller-server -b ruby_buildpack --no-route -m 100M -i 2
+```
+2. Access the UI, for example on bosh-lite, http://fortune-teller-ui.bosh-lite.com/
+
+2. Map an internal route to the fortune-teller-server
+```
+cf map-route fortune-teller-server apps.internal --hostname fortune-teller-server
+```
+3. Create a service and, bind it to fortune-teller-ui
+```
+cf cups fortune-server -p '{"url":"http://fortune-teller-server.apps.internal:8080"}'
+cf bs fortune-teller-ui fortune-server
+```
+4. Restart your app
+If you don't have capi deployments enabled
+```
+cf restart fortune-teller-ui
+```
+If you do have the experimental capi deployments enabled
+```
+cf v3-zdt-restart fortune-teller-ui
+```
+5. Add app to app network policy
+```
+cf add-network-policy fortune-teller-ui --destination-app fortune-teller-server
+```
+6. Bonus! If you have cflinuxfs3 stack and ruby buildpack available, do a zero down time update of dependencies of the fortune-teller-ui
+```
+cf v3-zdt-push fortune-teller-ui -s cflinuxfs3 --wait-for-deploy-complete
+```
+
 Running the demo locally
 ---
 
