@@ -13,7 +13,7 @@ Optionally use the experimental zdt restart and push with cflinuxfs3 stack and r
 cf push fortune-teller-ui -b ruby_buildpack -m 100M -i 3 
 cf push fortune-teller-server -b ruby_buildpack --no-route -m 100M -i 2
 ```
-2. Access the UI, for example on bosh-lite, http://fortune-teller-ui.bosh-lite.com/
+2. Access the UI, for example on bosh-lite, http://fortune-teller-ui.bosh-lite.com/, and enable auto-refresh
 
 2. Map an internal route to the fortune-teller-server
 ```
