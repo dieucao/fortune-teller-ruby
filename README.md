@@ -5,7 +5,8 @@ A rewrite of the [Spring Fortune Teller demo](https://github.com/spring-cloud-sa
 
 Running the demo on Cloud Foundry
 ---
-Requires cf networking, polyglot service discovery enabled
+Requires cf networking, polyglot service discovery enabled.
+
 Optionally use the experimental zdt restart and push with cflinuxfs3 stack and ruby buildpack
 
 1. Push both apps
@@ -25,6 +26,7 @@ cf cups fortune-server -p '{"url":"http://fortune-teller-server.apps.internal:80
 cf bs fortune-teller-ui fortune-server
 ```
 4. Restart your app
+
 If you don't have capi deployments enabled
 ```
 cf restart fortune-teller-ui
