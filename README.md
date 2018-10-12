@@ -31,7 +31,7 @@ If you don't have capi deployments enabled
 ```
 cf restart fortune-teller-ui
 ```
-If you do have the experimental capi deployments enabled
+If you do have the very experimental capi deployments enabled
 ```
 cf v3-zdt-restart fortune-teller-ui
 ```
@@ -39,7 +39,7 @@ cf v3-zdt-restart fortune-teller-ui
 ```
 cf add-network-policy fortune-teller-ui --destination-app fortune-teller-server
 ```
-6. Bonus! If you have cflinuxfs3 stack and ruby buildpack available, do a zero down time update of dependencies of the fortune-teller-ui
+6. Bonus! If you have cflinuxfs3 stack and ruby buildpack available, do a zero down time update of dependencies of the fortune-teller-ui (Also requires the very experimental capi deployments feature)
 ```
 cf v3-zdt-push fortune-teller-ui -s cflinuxfs3 --wait-for-deploy-complete
 ```
