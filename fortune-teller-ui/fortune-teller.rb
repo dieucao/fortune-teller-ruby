@@ -9,7 +9,7 @@ class FortuneTeller < Sinatra::Base
         if ENV.has_key? "VCAP_SERVICES" and JSON.parse(ENV["VCAP_SERVICES"]).has_key? "user-provided"
             FORTUNE_SERVER_URL = JSON.parse(ENV["VCAP_SERVICES"])["user-provided"].first["credentials"]["url"]
         else
-            FORTUNE_SERVER_URL = "http://localhost:9293"
+            FORTUNE_SERVER_URL = ""
         end
 
         
